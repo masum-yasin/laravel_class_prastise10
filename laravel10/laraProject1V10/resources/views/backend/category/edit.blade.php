@@ -12,9 +12,10 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Category Item</h5>
+           
 
               <!-- General Form Elements -->
-              <form method="post" action="category/update/{{$single['id']}}">
+              <form method="post" action="{{route('category.update',['id'=> $single['id']])}}">
                 @csrf
                 <div class="row mb-3 ">
                   <label for="inputText" class="col-sm-4 col-form-label">Category</label>
