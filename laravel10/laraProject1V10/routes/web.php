@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +30,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::prefix('admin')->group(function () {
+// });
+
+Route::get('admin/login',[AdminController::class,'login']);
+Route::post('admin/login',[AdminController::class,'store'])->name('adminLogin');
+Route::get('admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+
+// teacher middle ware
+Route::get('teacher/login',[TeacherController::class,'login']);
+Route::post('teacher/login',[TeacherController::class,'store'])->name('teacher.store');
+Route::get('teacher/dashboard',[TeacherController::class,'dashboard'])->name('teacher.dashboard');
 require __DIR__.'/auth.php';
+

@@ -12,15 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id();
-            //  $table->primary('id');
-            $table->string('course name',100);
-            $table->decimal('course fee',10);
+            $table->id(); // This creates an auto-incremented primary key column
+            $table->string('course_name', 100);
+            $table->decimal('course_fee', 10, 2);
             $table->tinyInteger('course_category_id');
-            $table->string('email',100);
-            $table->integer('phone',15);
-            $table->string('local city',50);
-            $table->string('description',300);
+            $table->string('email', 100);
+            $table->integer('phone')->unique(); // Changed to unique instead of auto-incremented primary key
+            $table->string('local_city', 50);
+            $table->string('description', 300);
             $table->timestamps();
         });
     }

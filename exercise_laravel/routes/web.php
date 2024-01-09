@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('contact');
+});
+// Route::get('/', function () {
+//     return view('admin.example', ['name' => 'Finn']);
+// });
+Route::get('test',function (Request $request){
+    // $request->session()->put('age', '30');
+    session(['name' => 'Larael World Wid Php Framwork']);
+});
+Route::get('/all',function(Request $request){
+//   return $request->session()->all();
 });
