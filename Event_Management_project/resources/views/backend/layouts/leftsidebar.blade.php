@@ -25,8 +25,8 @@
                         <span class="micon dw dw-copy"></span><span class="mtext">Categories</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{route('category.create')}}">All Category Event</a></li>
-                        <li><a href="{{route('category.index')}}">New Category Event</a></li>
+                        <li><a href="{{route('category.index')}}">All Category Event</a></li>
+                        <li><a href="{{route('category.create')}}">New Category Event</a></li>
                         
                        
                     </ul>
@@ -36,8 +36,8 @@
                         <span class="micon dw dw-copy"></span><span class="mtext">Products</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="{{route('product.create')}}">All Event</a></li>
-                        <li><a href="{{route('product.index')}}">New Event</a></li>
+                        <li><a href="{{route('product.index')}}">All Event</a></li>
+                        <li><a href="{{route('product.create')}}">New Event</a></li>
                         
                        
                     </ul>

@@ -8,33 +8,48 @@
 				<div class="pd-20 card-box mb-30">
 					<div class="clearfix">
 						<div class="pull-left">
-							<h4 class="text-blue h4">Default Basic Forms</h4>
+							<h4 class="text-blue h4">New Event  Forms</h4>
 					</div>
 					</div>
-					<form>
+					<form method="post" action="{{route('product.store')}}">
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Text</label>
+							@csrf
+							<label class="col-sm-12 col-md-2 col-form-label">Event Name</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Johnny Brown">
+								<input class="form-control" type="text" placeholder="Enter Event Name" name="product">
 							</div>
 						</div>
-						{{-- <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Time</label>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Description</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control time-picker" placeholder="Select time" type="text">
+								<textarea name="desc" id="" cols="90" rows="5" class="form-control"></textarea>
 							</div>
-						</div> --}}
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Price</label>
+							<div class="col-sm-12 col-md-10">
+								<input class="form-control" type="text" placeholder="Enter Event Price" name="price">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label">Event Category</label>
+							<div class="col-sm-12 col-md-10">
+								<select name="category" id="" class="form control">
+									<option value="Selected">Select Event Category</option>
+									@foreach ($categories as $item)
+									<option value="{{$item->id}}">{{$item->name}}</option>
+									@endforeach
+
+								</select>
+							</div>
+						</div>
+						
+						
 						
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Color</label>
+							<label class="col-sm-12 col-md-2 col-form-label"></label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" value="#563d7c" type="color">
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Input Range</label>
-							<div class="col-sm-12 col-md-10">
-								<input class="form-control" value="50" type="range">
+								<button type="submit" class="form-control">Submit</button>
 							</div>
 						</div>
 					</form>

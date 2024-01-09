@@ -34,52 +34,38 @@
 						
 						
 					</div>
+					@if (session('msg'))
+					<div class="alert alert-danger">
+						{{session('msg')}}
+					</div>
+						
+					@endif
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
-								<th scope="col">Tag</th>
+								<th scope="col">#ID</th>
+								<th scope="col">category Name</th>
+								<th scope="col">Action</th>
+							
 							</tr>
 						</thead>
 						<tbody>
+							@foreach ($categories as $item)
+								
+						
 							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td><span class="badge badge-primary">Primary</span></td>
+								<th scope="row">{{$item['id']}}</th>
+								<td>{{$item['name']}}</td>
+								<td><a href="category/delete/{{$item['id']}}"><i class="btn btn-danger">Delete</i></a>
+									<a href="category/edit/{{$item['id']}}"><i class="btn btn-warning">Edit</i></a></td>
+								
+								
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td><span class="badge badge-secondary">Secondary</span></td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td><span class="badge badge-success">Success</span></td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td><span class="badge badge-secondary">Secondary</span></td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td><span class="badge badge-success">Success</span></td>
-							</tr>
+							@endforeach
+							
+							
+							
+							
 						</tbody>
 					</table>
 					

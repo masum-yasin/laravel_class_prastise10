@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\product;
 use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
@@ -12,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('backend.product.index');
+       $data['products'] =product::all();
+        return view('backend.product.index',$data);
     }
 
     /**
@@ -20,7 +24,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.product.create');
+        $data['categories']=Category::All();
+        return view('backend.product.create',$data);
     }
 
     /**
@@ -28,7 +33,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     $data = [
+        'name'=>$request->name,
+        'description'=>$request->desc,
+        'price'=>$request->price,
+        'category_id'=>$request->category,
+     ];
+     if(product::insert($data)){
+        return redirect('product')->with('msg','Product Upload Successfully');
+     }
     }
 
     /**
@@ -44,7 +57,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = product::find($id);
+        $data['product']=$product;
+        return view('backend.product.edit',$data);
     }
 
     /**
@@ -52,7 +67,24 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = product::find($id);
+        $validate = $request->validate(
+            [
+                'name'=>'required|min:5',
+              
+               
+            ]);
+            if($validate){
+            $data = [
+                'name'=>$request->name,
+                                               
+                'price'=>$request->price,
+                
+                
+            ];
+        $product->update($data);
+        return redirect('product')->with('msg','Update Successfully');
+        }
     }
 
     /**
@@ -60,6 +92,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = product::find($id);
+        if($product->delete()){
+            return redirect('product')->with('msg','Delete Successfully');
+        }
     }
 }

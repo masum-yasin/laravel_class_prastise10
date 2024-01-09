@@ -11,11 +11,18 @@
 							<h4 class="text-blue h4">Default Basic Forms</h4>
 					</div>
 					</div>
-					<form>
+					<form method="post" action="{{route('category.update',['id'=>$single['id']])}}">
+						@csrf
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Text</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Johnny Brown">
+								<input class="form-control" type="text" placeholder="Enter your Category" name="name" value="{{old('name')? old('name'):$single['name']}}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label"></label>
+							<div class="col-sm-12 col-md-10">
+								<button type="submit" class="form-control">UPDATE</button>
 							</div>
 						</div>
 						

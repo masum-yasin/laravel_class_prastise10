@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\ContactController;
 use App\Http\Controllers\backend\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,13 +64,20 @@ Route::middleware('auth')->group(function () {
                 Route::get('product/create',[ProductController::class,'create'])->name('product.create');
                 Route::post('product/store',[ProductController::class,'store'])->name('product.store');
                 Route::get('product/edit/{id}',[ProductController::class,'edit'])->name('product.edit');
-                Route::get('product/update',[ProductController::class,'update'])->name('product.update');
-                Route::get('product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+                Route::post('product/update/{id}',[ProductController::class,'update'])->name('product.update');
+                Route::get('product/delete/{id}',[ProductController::class,'destroy'])->name('product.delete');
 
 
 
                 // Category Routing Start//
                 Route::get('category',[CategoryController::class,'index'])->name('category.index');
                 Route::get('category/create',[CategoryController::class,'create'])->name('category.create');
-                Route::get('category/store',[CategoryController::class,'store'])->name('category.store');
+                Route::post('category/store',[CategoryController::class,'store'])->name('category.store');
+                Route::get('category/edit/{id}',[CategoryController::class,'edit'])->name('category.edit');
+                Route::post('category/update/{id}',[CategoryController::class,'update'])->name('category.update');
+                Route::get('category/delete/{id}',[CategoryController::class,'destroy'])->name('category.delete');
+               // contact section start//
+    //  Route::get('contact/create', [ContactController::class,'create'])->name('contact.create');
+     Route::post('contact/store',[ContactController::class,'store'])->name('contact.store');
 });
+    

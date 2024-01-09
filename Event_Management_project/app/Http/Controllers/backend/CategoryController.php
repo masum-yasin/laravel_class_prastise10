@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+
 
 class CategoryController extends Controller
 {
@@ -12,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('backend.category.index');
+        $data['categories']=Category::all();
+        return view('backend.category.index',$data);
+       
     }
 
     /**
@@ -28,7 +32,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data =['name'=>$request->name];
+        // print_r($data);
+        if(Category::insert($data)){
+            return redirect('category')->with('msg','Category Insert Successfully');
+        }
     }
 
     /**
@@ -44,7 +52,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+     $category = Category::find($id);
+     $data['single']=$category;
+     return view('backend.category.edit',$data);
     }
 
     /**
@@ -52,7 +62,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+    $category = Category::find($id);
+    $validate = $request->validate(
+        ['name'=>'required|min:4'],
+    );
+    if($validate){
+        $data = [
+            'name'=>$request->name
+        ];
+        $category->update($data);
+        return redirect('category')->with('msg','Category update successfully');
+    }
     }
 
     /**
@@ -60,6 +80,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category =Category::find($id);
+        if($category->delete()){
+            return redirect('category')->with('msg','Delete successfully');
+        }
     }
 }

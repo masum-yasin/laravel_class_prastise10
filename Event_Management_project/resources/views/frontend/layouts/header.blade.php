@@ -9,15 +9,15 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <a class="navbar-brand" href="index.html">
-                            <img src="frontend/assets/images/logo-white.png" alt="image">
-                            <img src="frontend/assets/images/logo.png" alt="image">
+                            <img src="{{asset('frontend/assets/images/logo-white.png')}}" alt="image">
+                            <img src="{{asset('frontend/assets/images/logo.png')}}" alt="image">
                         </a>
                     </div>
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="navbar-collapse1 d-flex align-items-center" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav" id="responsive-menu">
                             <li class="dropdown submenu active">
-                                <a href="index.html" class="">Home</a>
+                                <a href="/" class="">Home</a>
                             </li>
 
                             <li><a href="about.html" class="">About Us</a></li>
@@ -56,7 +56,7 @@
                                     <li><a href="detail-1.html">Single Post</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html" class="">Contact Us</a></li>
+                            <li><a href="frontend/contact" class="">Contact Us</a></li>
                             <li class="search-main">
                                 <a href="#search1" class="mt_search"><i class="fa fa-search fs-5"></i></a>
                             </li>

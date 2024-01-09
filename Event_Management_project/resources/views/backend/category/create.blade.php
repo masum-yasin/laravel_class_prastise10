@@ -6,24 +6,32 @@
 				
 				<!-- Default Basic Forms Start -->
 				<div class="pd-20 card-box mb-30">
+					@if (session('msg'))
+					<div class="alert alert-danger">
+						{{session('msg')}};
+					</div>
+						
+					@endif
 					<div class="clearfix">
 						<div class="pull-left">
 							<h4 class="text-blue h4">Default Basic Forms</h4>
 					</div>
 					</div>
-					<form>
+					<form method="post" action="{{route('category.store')}}">
+						@csrf
 						<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Text</label>
+							<label class="col-sm-12 col-md-2 col-form-label">Product Category</label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control" type="text" placeholder="Johnny Brown">
+								<input class="form-control" type="text" placeholder="Enter Your Category" name="name">
 							</div>
 						</div>
-						{{-- <div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Time</label>
+						<div class="form-group row">
+							<label class="col-sm-12 col-md-2 col-form-label"></label>
 							<div class="col-sm-12 col-md-10">
-								<input class="form-control time-picker" placeholder="Select time" type="text">
+								<button type="submit" class="form-control">Submit</button>
 							</div>
-						</div> --}}
+						</div>
+						
 						
 						<div class="form-group row">
 							<label class="col-sm-12 col-md-2 col-form-label">Color</label>
@@ -37,6 +45,7 @@
 								<input class="form-control" value="50" type="range">
 							</div>
 						</div>
+						
 					</form>
 					
 					</div>

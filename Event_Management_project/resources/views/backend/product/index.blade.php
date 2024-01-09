@@ -37,49 +37,31 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
-								<th scope="col">Tag</th>
+								<th scope="col">#ID</th>
+								<th scope="col">Event Name</th>
+								<th scope="col">Description</th>
+								<th scope="col">Price</th>
+								<th scope="col">Category_ID</th>
+								<th scope="col">Action</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach ($products as $product)
+								
+							
 							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-								<td><span class="badge badge-primary">Primary</span></td>
+								<th scope="row">{{$product['id']}}</th>
+								<td>{{$product['name']}}</td>
+								<td>{{$product['description']}}</td>
+								<td>{{$product['price']}}</td>
+								<td>{{$product['category_id']}}</td>
+								<td>
+									<a href="product/delete/{{$product['id']}}"><i class="btn btn-danger">Delete</i></a>
+									<a href="product/edit/{{$product['id']}}"><i class="btn btn-warning">Edit</i></a>
+								</td>
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td><span class="badge badge-secondary">Secondary</span></td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td><span class="badge badge-success">Success</span></td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-								<td><span class="badge badge-secondary">Secondary</span></td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-								<td><span class="badge badge-success">Success</span></td>
-							</tr>
+							@endforeach
+							
 						</tbody>
 					</table>
 					
