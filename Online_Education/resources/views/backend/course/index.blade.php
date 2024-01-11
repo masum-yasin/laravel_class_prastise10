@@ -14,43 +14,31 @@
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th>User</th>
-                      <th>Product</th>
-                      <th>Sale</th>
-                      <th>Status</th>
+                      <th>#ID</th>
+                      <th>Course Name</th>
+                      <th>Course Fee</th>
+                      <th>Course Category Id</th>
+                      <th>Course Duration</th>
+                      <th>Description</th>
+                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Jacob</td>
-                      <td>Photoshop</td>
-                      <td class="text-danger"> 28.76% <i class="mdi mdi-arrow-down"></i></td>
-                      <td><label class="badge badge-danger">Pending</label></td>
-                    </tr>
-                    <tr>
-                      <td>Messsy</td>
-                      <td>Flash</td>
-                      <td class="text-danger"> 21.06% <i class="mdi mdi-arrow-down"></i></td>
-                      <td><label class="badge badge-warning">In progress</label></td>
-                    </tr>
-                    <tr>
-                      <td>John</td>
-                      <td>Premier</td>
-                      <td class="text-danger"> 35.00% <i class="mdi mdi-arrow-down"></i></td>
-                      <td><label class="badge badge-info">Fixed</label></td>
-                    </tr>
-                    <tr>
-                      <td>Peter</td>
-                      <td>After effects</td>
-                      <td class="text-success"> 82.00% <i class="mdi mdi-arrow-up"></i></td>
-                      <td><label class="badge badge-success">Completed</label></td>
-                    </tr>
-                    <tr>
-                      <td>Dave</td>
-                      <td>53275535</td>
-                      <td class="text-success"> 98.05% <i class="mdi mdi-arrow-up"></i></td>
-                      <td><label class="badge badge-warning">In progress</label></td>
-                    </tr>
+                    @foreach ($courses as $course)
+                      <tr>
+                      <td>{{$course['id']}}</td>
+                      <td>{{$course['course_name']}}</td>
+                      <td>{{$course['course_fee']}}</td>
+                      <td>{{$course['course_category_id']}}</td>
+                      <td>{{$course['course_duration']}}</td>
+                      <td>{{$course['description']}}</td>
+                      <td>
+                        <a href="course/delete/{{$course['id']}}"><i class="btn btn-danger">Delete</i></a>
+                          <a href="course/edit/{{$course['id']}}"><i class="btn btn-warning">Edit</i></a>
+                      </td>
+                      </tr>
+                      @endforeach
+                   
                   </tbody>
                 </table>
               </div>

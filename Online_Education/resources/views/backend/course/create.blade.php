@@ -19,10 +19,11 @@
             <div class="card-body">
               
              
-              <form class="forms-sample">
+              <form class="forms-sample" method="post" action="{{route('course.store')}}">
+                @csrf
                 <div class="form-group">
                   <label for="exampleInputName1">Course Name</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="course">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="course_name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputName1">Course Fee</label>
@@ -33,18 +34,17 @@
                     <label for="exampleInputName1">Course Category ID</label>
                     <select name="course_category" id="exampleInputName3" class="form-control">
                             <option value="selected">Course Selected</option>
-                            <option value=""></option>
+                            @foreach ($categories as $category)
+                              <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                     </select>
-                    {{-- <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="course"> --}}
+                  
                   </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail3">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail4" placeholder="Email" name="email">
+                  <label for="exampleInputEmail3">Course Duration</label>
+                  <input type="text" class="form-control" id="exampleInputEmail4" placeholder="Course Duration" name="course_duration">
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword4">Phone</label>
-                  <input type="number" class="form-control" id="exampleInputPassword5" placeholder="Phoen Number" name="phone">
-                </div>
+               
                 {{-- <div class="form-group">
                   <label for="exampleSelectGender">Gender</label>
                   <select class="form-control" id="exampleSelectGender">
@@ -62,13 +62,10 @@
                     </span>
                   </div>
                 </div> --}}
-                <div class="form-group">
-                  <label for="exampleInputCity1">Local City</label>
-                  <input type="text" class="form-control" id="exampleInputCity6" placeholder="Location" name="city">
-                </div>
+               
                 <div class="form-group">
                   <label for="exampleTextarea1">Description</label>
-                  <textarea class="form-control" id="exampleTextarea7" rows="4"></textarea>
+                  <textarea class="form-control" id="exampleTextarea7" name="desc" rows="4"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-dark">Cancel</button>

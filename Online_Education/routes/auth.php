@@ -66,16 +66,21 @@ Route::middleware('auth')->group(function () {
 
                 // Course Route Start//
                 Route::get('course',[CourseController::class,'index'])->name('course.index');
-                Route::get('create/course',[CourseController::class,'create'])->name('create.course');
-                Route::post('create/store',[CourseController::class,'store'])->name('store.course');
-                Route::get('course/edit/{id}',[CourseController::class,'edit'])->name('edit.course');
-                Route::post('course/update/{id}',[CourseController::class,'update'])->name('update.course');
-                Route::get('create/delete/{id}',[CourseController::class,'edit'])->name('delete.course');
+                Route::get('course.create',[CourseController::class,'create'])->name('course.create');
+                Route::post('course.store',[CourseController::class,'store'])->name('course.store');
+                Route::get('course/edit/{id}',[CourseController::class,'edit'])->name('course.edit');
+                Route::post('course/update/{id}',[CourseController::class,'update'])->name('course.update');
+                Route::get('course/delete/{id}',[CourseController::class,'destroy'])->name('course.delete');
+
+
+
+
+
                 // course category route start//
-                Route::get('category',[CategoryController::class,'index'])->name('index.category');
-                Route::get('category/create',[CategoryController::class,'create'])->name('create.category');
-                Route::post('category/store',[CategoryController::class,'store'])->name('store.category');
+                Route::get('category',[CategoryController::class,'index'])->name('category.index');
+                Route::get('category/create',[CategoryController::class,'create'])->name('category.create');
+                Route::post('category/store',[CategoryController::class,'store'])->name('category.store');
                 Route::get('category/edit/{id}',[CategoryController::class,'edit'])->name('edit.category');
-                Route::get('category/update/{id}',[CategoryController::class,'index'])->name('update.category');
-                Route::get('category/delete/{id}',[CategoryController::class,'destory'])->name('destory.category');
+                Route::post('category/update/{id}',[CategoryController::class,'update'])->name('category.update');
+                Route::get('category/delete/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
 });

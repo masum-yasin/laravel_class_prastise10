@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,17 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('contact');
+    return view('welcome');
 });
-// Route::get('/', function () {
-//     return view('admin.example', ['name' => 'Finn']);
-// });
+Route::get('contact',[ContactController::class,'index'])->name('contact.us');
+
 Route::get('test',function (Request $request){
     // $request->session()->put('age', '30');
     session(['name' => 'Larael World Wid Php Framwork']);
 });
-Route::get('/all',function(Request $request){
-//   return $request->session()->all();
-});
+
+//  Route::get('contact/create',[ContactController::class,'create'])->name('contact.create');

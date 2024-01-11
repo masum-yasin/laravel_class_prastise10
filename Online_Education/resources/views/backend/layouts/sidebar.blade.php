@@ -74,7 +74,7 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href=" {{route('create.course')}}">Add New Course</a></li>
+            <li class="nav-item"> <a class="nav-link" href=" {{route('course.create')}}">Add New Course</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{route('course.index')}}">All Course</a></li>
             {{--  {{route('index.category')}} --}}
             {{-- {{route('course.index')}} --}}
@@ -131,10 +131,10 @@
         </a>
         <div class="collapse" id="auth">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href=" {{route('create.category')}}">Add Course Category </a></li>
+            <li class="nav-item"> <a class="nav-link" href=" {{route('category.create')}}">Add Course Category </a></li>
             {{-- {{route('create.category')}} --}}
            
-            <li class="nav-item"> <a class="nav-link" href=" {{route('index.category')}}">All Course Category List</a></li>
+            <li class="nav-item"> <a class="nav-link" href=" {{route('category.index')}}">All Course Category List</a></li>
             {{-- {{route('index.category')}} --}}
           </ul>
         </div>

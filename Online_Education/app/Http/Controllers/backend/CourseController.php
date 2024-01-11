@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\Models\CourseCategory;
 use Illuminate\Http\Request;
+
+
 
 class CourseController extends Controller
 {
@@ -12,7 +16,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('backend.course.index');
+        $data['courses']=Course::all();
+        return view('backend.course.index',$data);
     }
 
     /**
@@ -20,7 +25,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('backend.course.create');
+        $data['categories']=CourseCategory::all();
+        return view('backend.course.create',$data);
     }
 
     /**
@@ -28,8 +34,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $data = [
+        'course_name'=>$request->course_name,
+        'course_fee'=>$request->course_fee,
+        'course_category_id'=>$request->course_category,
+        'course_duration'=>$request->course_duration,
+        'description'=>$request->desc,
+      ];
+    //   print_r($data);
+    if(Course::insert($data)){
+        return redirect('course')->with('msg','Course Sussessfully Store');
     }
+    }
+   
 
     /**
      * Display the specified resource.
@@ -44,7 +61,9 @@ class CourseController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $courses= Course::find($id);
+       $data['course']=$courses;
+       return view('backend.course.edit',$data);
     }
 
     /**
@@ -52,7 +71,22 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $courses = Course::find($id);
+        $validated = $request->validate([
+            'course_name' => 'required|min:5',
+            'course_fee' => 'required|min:10',
+            
+        ]);
+        if($validated){
+            $data =[
+                'course_name'=>$request->course_name,
+                'course_fee'=>$request->course_fee,
+                'course_duration'=>$request->course_duration];
+
+
+                $courses->update($data);
+                return redirect('course')->with('msg','Update Successfull Course');
+        }
     }
 
     /**
@@ -60,6 +94,9 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Course::find($id);
+        if($category->delete()){
+            return redirect('course')->with('msg','Delete Successfully');
+        }
     }
 }

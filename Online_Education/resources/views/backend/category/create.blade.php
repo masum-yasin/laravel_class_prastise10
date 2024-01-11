@@ -15,12 +15,19 @@
       <div class="row">
         
         <div class="col-12 grid-margin stretch-card">
+          @if (session('msg'))
+          <div class="alert alert-danger">
+            {{session('msg')}}
+          </div>
+              
+          @endif
           <div class="card">
             <div class="card-body">
-             <form class="forms-sample">
+             <form class="forms-sample" method="post" action="{{route('category.store')}}">
+              @csrf
                 <div class="form-group">
                   <label for="exampleInputName1">Course Category</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="course">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="category">
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-dark">Cancel</button>

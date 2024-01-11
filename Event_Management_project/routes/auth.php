@@ -78,6 +78,6 @@ Route::middleware('auth')->group(function () {
                 Route::get('category/delete/{id}',[CategoryController::class,'destroy'])->name('category.delete');
                // contact section start//
     //  Route::get('contact/create', [ContactController::class,'create'])->name('contact.create');
-     Route::post('contact/store',[ContactController::class,'store'])->name('contact.store');
+    //  Route::post('contact/store',[ContactController::class,'store'])->name('contact.store');
 });
     
