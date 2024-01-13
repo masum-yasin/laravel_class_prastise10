@@ -28,7 +28,7 @@
               @csrf
                 <div class="form-group">
                   <label for="exampleInputName1"> Student Course Category</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Student Course Category" name="scategory">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Student Course Category" name="course_name">
                 </div>
                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
                 <button class="btn btn-dark">Cancel</button>

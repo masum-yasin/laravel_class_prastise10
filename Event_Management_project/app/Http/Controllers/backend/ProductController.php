@@ -34,7 +34,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
      $data = [
-        'name'=>$request->name,
+        'name'=>$request->product,
         'description'=>$request->desc,
         'price'=>$request->price,
         'category_id'=>$request->category,

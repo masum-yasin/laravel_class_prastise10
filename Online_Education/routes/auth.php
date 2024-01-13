@@ -94,8 +94,8 @@ Route::middleware('auth')->group(function () {
                 Route::get('scategory/create',[SCategoryController::class,'create'])->name('scategory.create');
                 Route::post('scategory/store',[SCategoryController::class,'store'])->name('scategory.store');
                 Route::get('scategory/edit/{id}',[SCategoryController::class,'edit'])->name('scategory.edit');
-                Route::get('scategory/update/{id}',[SCategoryController::class,'update'])->name('scategory.update');
-                Route::get('scategory/delete/{id}',[SCategoryController::class,'delete'])->name('scategory.delete');
+                Route::post('scategory/update/{id}',[SCategoryController::class,'update'])->name('scategory.update');
+                Route::get('scategory/delete/{id}',[SCategoryController::class,'destroy'])->name('scategory.destroy');
 
                 
 });

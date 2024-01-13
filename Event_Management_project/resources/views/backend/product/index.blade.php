@@ -54,7 +54,7 @@
 								<td>{{$product['name']}}</td>
 								<td>{{$product['description']}}</td>
 								<td>{{$product['price']}}</td>
-								<td>{{$product['category_id']}}</td>
+								<td>{{$product->category->name}}</td>
 								<td>
 									<a href="product/delete/{{$product['id']}}"><i class="btn btn-danger">Delete</i></a>
 									<a href="product/edit/{{$product['id']}}"><i class="btn btn-warning">Edit</i></a>

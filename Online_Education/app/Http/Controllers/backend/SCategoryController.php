@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\CourseCategory;
 use App\Models\StudentCategory;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 
@@ -32,8 +34,8 @@ class SCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = ['course_name'=>$request->scategory];
-        print_r($data);
+        $data = ['course_name'=>$request->course_name];
+        // print_r($data);
         if(StudentCategory::insert($data)){
             return redirect('scategory')->with('msg','Student Category Successfully');
         }
@@ -52,7 +54,11 @@ class SCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $scategorys =StudentCategory::find($id);
+        $data['scategory'] = $scategorys;
+    //  echo "Bangladesh";
+        return view('backend.scategory.edit',$data);
+
     }
 
     /**
@@ -60,7 +66,19 @@ class SCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+    $scategory = StudentCategory::find($id);
+
+ $validated = $request->validate([
+        'course_name' => 'required|mix:6|max:50',
+       
+    ]);
+    if($validated){
+        $data = [
+            "course_name"=>$request->course,
+        ];
+        $scategory->update($data);
+        return redirect('scategory')->with('msg','Update Successfully');
+    }
     }
 
     /**
@@ -68,6 +86,9 @@ class SCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $scategory = StudentCategory::find($id);
+        if($scategory->delete()){
+            return redirect('scategory')->with('msg','Delete Successfully');
+        }
     }
 }

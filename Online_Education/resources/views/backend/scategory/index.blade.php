@@ -25,8 +25,8 @@
                       <td>{{$scategory['id']}}</td>
                       <td>{{$scategory['course_name']}}</td>
                       <td>
-                        <a href=""><i class="btn btn-danger">Delete</i></a>
-                        <a href=""><i class="btn btn-warning">Edit</i></a>
+                        <a href="scategory/delete/{{$scategory['id']}}"><i class="btn btn-danger">Delete</i></a>
+                        <a href="scategory/edit/{{$scategory['id']}}"><i class="btn btn-warning">Edit</i></a>
                       </td>
                     
                       </tr>
