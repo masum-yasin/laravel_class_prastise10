@@ -11,7 +11,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CourseController;
+use App\Http\Controllers\backend\SCategoryController;
 use Illuminate\Support\Facades\Route;
+
+
 
 
 
@@ -83,4 +86,16 @@ Route::middleware('auth')->group(function () {
                 Route::get('category/edit/{id}',[CategoryController::class,'edit'])->name('edit.category');
                 Route::post('category/update/{id}',[CategoryController::class,'update'])->name('category.update');
                 Route::get('category/delete/{id}',[CategoryController::class,'destroy'])->name('category.destroy');
+
+
+
+                // student Course Category//
+                Route::get('scategory',[SCategoryController::class,'index'])->name('scategory.index');
+                Route::get('scategory/create',[SCategoryController::class,'create'])->name('scategory.create');
+                Route::post('scategory/store',[SCategoryController::class,'store'])->name('scategory.store');
+                Route::get('scategory/edit/{id}',[SCategoryController::class,'edit'])->name('scategory.edit');
+                Route::get('scategory/update/{id}',[SCategoryController::class,'update'])->name('scategory.update');
+                Route::get('scategory/delete/{id}',[SCategoryController::class,'delete'])->name('scategory.delete');
+
+                
 });

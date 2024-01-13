@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Teacher Guide student login system//
+Route::get('teacher/login',[TeacherController::class,'login']);
+Route::post('teacher/login',[TeacherController::class,'store'])->name('TeacherLogin');
+Route::get('teacher/tdashboard',[TeacherController::class,'tdashboard'])->name('teacher.tdashboard');
+
 
 require __DIR__.'/auth.php';
