@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('student_categories', function (Blueprint $table) {
             $table->id('id');
             // $table->primary('id');
-            $table->string('course_name',50);
+            $table->string('scourse_name',50);
             $table->timestamps();
         });
     }

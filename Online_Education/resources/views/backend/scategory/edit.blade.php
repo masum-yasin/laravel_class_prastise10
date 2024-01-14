@@ -24,13 +24,13 @@
         
           <div class="card">
             <div class="card-body">
-             <form class="forms-sample" method="post" action="">
+             <form class="forms-sample" method="post"  action="{{route('scategory.update',['id'=>$scategory['id']])}}">
               @csrf
                 <div class="form-group">
                   <label for="exampleInputName1"> Student Course Category</label>
-                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Student Course Category" name="course_name" value="{{old('course_name')? old('course_name'):$scategory['course_name']}}">
+                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Student Course Category" name="scourse_name" value="{{old('scourse_name')? old('scourse_name'):$scategory['scourse_name']}}">
                 </div>
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <button type="submit" class="btn btn-primary mr-2">UPDATE</button>
                 <button class="btn btn-dark">Cancel</button>
               </form>
             </div>

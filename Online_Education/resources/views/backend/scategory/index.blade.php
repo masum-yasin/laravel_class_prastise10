@@ -23,7 +23,7 @@
                     @foreach ($scategories as $scategory)
                       <tr>
                       <td>{{$scategory['id']}}</td>
-                      <td>{{$scategory['course_name']}}</td>
+                      <td>{{$scategory['scourse_name']}}</td>
                       <td>
                         <a href="scategory/delete/{{$scategory['id']}}"><i class="btn btn-danger">Delete</i></a>
                         <a href="scategory/edit/{{$scategory['id']}}"><i class="btn btn-warning">Edit</i></a>

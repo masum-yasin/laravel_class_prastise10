@@ -64,6 +64,7 @@
           <span class="menu-title">Dashboard</span>
         </a>
       </li>
+      {{-- Category Routing --}}
       <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-icon">
@@ -80,7 +81,25 @@
           </ul>
         </div>
       </li>
-
+      <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+          <span class="menu-icon">
+            <i class="mdi mdi-security"></i>
+          </span>
+          <span class="menu-title">Course Category</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="auth">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href=" {{route('category.create')}}">Add Course Category </a></li>
+  
+           
+            <li class="nav-item"> <a class="nav-link" href=" {{route('category.index')}}">All Course Category List</a></li>
+        
+          </ul>
+        </div>
+      </li>
+{{-- Student category Routing --}}
       <li class="nav-item menu-items">
         <a class="nav-link" data-toggle="collapse" href="#scourse" aria-expanded="false" aria-controls="scourse">
           <span class="menu-icon">
@@ -101,6 +120,28 @@
           </ul>
         </div>
       </li>
+      {{-- Student Course Routing --}}
+      <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#scategory" aria-expanded="false" aria-controls="scourse">
+          <span class="menu-icon">
+            <i class="mdi mdi-security"></i>
+          </span>
+          <span class="menu-title">Student Course</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="scategory">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href=" {{route('scourse.create')}}">
+              
+              Student Course</a></li>
+          
+           
+            <li class="nav-item"> <a class="nav-link" href=" {{route('scourse.index')}}">All Student Course </a></li>
+        
+          </ul>
+        </div>
+      </li>
+
 
 
 
@@ -118,24 +159,7 @@
      
       
      
-      <li class="nav-item menu-items">
-        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-          <span class="menu-icon">
-            <i class="mdi mdi-security"></i>
-          </span>
-          <span class="menu-title">Course Category</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="auth">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href=" {{route('category.create')}}">Add Course Category </a></li>
-            {{-- {{route('create.category')}} --}}
-           
-            <li class="nav-item"> <a class="nav-link" href=" {{route('category.index')}}">All Course Category List</a></li>
-            {{-- {{route('index.category')}} --}}
-          </ul>
-        </div>
-      </li>
+      
       <li class="nav-item menu-items">
         <a class="nav-link" href="http://www.bootstrapdash.com/demo/corona-free/jquery/documentation/documentation.html">
           <span class="menu-icon">
