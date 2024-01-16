@@ -12,7 +12,9 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\backend\CourseController;
 use App\Http\Controllers\backend\SCategoryController;
+use App\Http\Controllers\backend\SCourseController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -96,6 +98,14 @@ Route::middleware('auth')->group(function () {
                 Route::get('scategory/edit/{id}',[SCategoryController::class,'edit'])->name('scategory.edit');
                 Route::post('scategory/update/{id}',[SCategoryController::class,'update'])->name('scategory.update');
                 Route::get('scategory/delete/{id}',[SCategoryController::class,'destroy'])->name('scategory.destroy');
+
+               // separate of studetn course
+                Route::get('scourse',[SCourseController::class,'index'])->name('scourse.index');
+                Route::get('scourse/create',[SCourseController::class,'create'])->name('scourse.create');
+                Route::post('scourse/store',[SCourseController::class,'store'])->name('scourse.store');
+                Route::get('scourse/edit/{id}',[SCourseController::class,'edit'])->name('scourse.edit');
+                Route::post('scourse/update/{id}',[SCourseController::class,'update'])->name('scourse.update');
+                Route::get('scourse/delete/{id}',[SCourseController::class,'destroy'])->name('scourse.destroy');
 
                 
 });

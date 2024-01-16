@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('student_courses', function (Blueprint $table) {
             $table->id(); // This creates an auto-incremented primary key column
-            $table->string('student_name', 100);
-            $table->integer('phone')->unique(); 
-            $table->string('email', 70);
-            $table->string('local_city', 50);
-            $table->tinyInteger('course_category_id');
+            $table->string('student_name', 100)->nullable();
+            $table->integer('phone')->nullable(); 
+            $table->string('email', 70)->nullable();
+            $table->string('local_city', 50)->nullable();
+            $table->tinyInteger('scourse_category_id');
             $table->string('course_duration',50);
             $table->string('Lac_description', 300);
             $table->timestamps();

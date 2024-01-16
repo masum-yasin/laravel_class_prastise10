@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\StudentCategory;
+use App\Models\StudentCourse;
 use Illuminate\Http\Request;
+
 
 class SCourseController extends Controller
 {
@@ -12,7 +15,8 @@ class SCourseController extends Controller
      */
     public function index()
     {
-        //
+        $data['scourses']=StudentCourse::all();
+        return view('backend.scourse.index',$data);
     }
 
     /**
@@ -20,7 +24,8 @@ class SCourseController extends Controller
      */
     public function create()
     {
-        //
+        $scourse['categories'] = StudentCategory::all();
+        return view('backend.scourse.create',$scourse);
     }
 
     /**
@@ -28,31 +33,61 @@ class SCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data = [
+        'student_name'=>$request->student_name,
+        'phone'=>$request->phone,
+        'email'=>$request->email,
+        'local_city'=>$request->city,
+        'scourse_category_id'=>$request->course_category,
+        'course_duration'=>$request->duration,
+        'Lac_description'=>$request->desc,
+       ];
+    //    print_r($data);
+       if(StudentCourse::insert($data));
+       return redirect('scourse')->with('msg','Student Course Successfully');
     }
-
-    /**
-     * Display the specified resource.
-     */
+   
+   
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+       $scourse = StudentCourse::find($id);
+       $data['single']= $scourse;
+       return view('backend.scourse.edit',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, string $id)
     {
-        //
+        $scourse = StudentCourse::find($id);
+        // $validated = $request->validate([
+        //     'student_name' => 'required|min:5',
+        //     'phone' => 'required|min:5',
+        //     'city' => 'required|min:3',
+           
+        // ]);
+        $validated = $request->validate([
+            'student_name' => 'required|min:5',
+            'phone' => 'required|min:5',
+            'city' => 'required|min:3',
+        ]);
+        if($validated){
+            $data=[
+                'student_name'=>$request->student_name,
+                'phone'=>$request->phone,
+                'email'=>$request->email,
+                'local_city'=>$request->city,
+                'scourse_category_id'=>$request->course_category,
+                'course_duration'=>$request->duration,
+                'Lac_description'=>$request->desc,
+            ];
+            $scourse->update($data);
+            return redirect('scourse')->with('msg','Update Successfully');
+        }
     }
 
     /**
@@ -60,6 +95,9 @@ class SCourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $scoruse = StudentCourse::find($id);
+        if($scoruse->delete()){
+            return redirect('scourse')->with('msg','Student Course Delete Successfully');
+        }
     }
 }
