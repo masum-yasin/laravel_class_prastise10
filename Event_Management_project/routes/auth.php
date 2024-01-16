@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\backend\CategoryController;
-use App\Http\Controllers\backend\ContactController;
+// use App\Http\Controllers\backend\ContactController;
 use App\Http\Controllers\backend\ProductController;
 use Illuminate\Support\Facades\Route;
 

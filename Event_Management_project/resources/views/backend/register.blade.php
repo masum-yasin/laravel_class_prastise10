@@ -43,7 +43,7 @@
 			</div>
 			<div class="login-menu">
 				<ul>
-					<li><a href="login.html">Login</a></li>
+					<li><a href="login.html">Registration</a></li>
 				</ul>
 			</div>
 		</div>
@@ -63,7 +63,7 @@
                     </ul>
                 </div>                       
             @endif
-				<div class="col-md-6 col-lg-5">
+				<div class="col-md-6 col-lg-5 text-center">
 					<div class="register-box bg-white box-shadow border-radius-10">
 						<div class="wizard-content">
 							<form method="POST" action="{{ route('register') }}"  class="tab-wizard2 wizard-circle wizard" >
@@ -71,35 +71,35 @@
 								
 								<section>
 								
-									<div class="form-wrap max-width-600 mx-auto">
+									<div class="form-wrap max-width-800 mx-auto">
 										<div class="form-group row">
 											<label class="col-sm-4 col-form-label">Email Address*</label>
-											<div class="col-sm-8">
+											<div class="col-sm-12">
 												<input type="email" class="form-control" name="email">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-4 col-form-label">Username*</label>
-											<div class="col-sm-8">
+											<div class="col-sm-12">
 												<input type="text" class="form-control" name="name">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-4 col-form-label">Password*</label>
-											<div class="col-sm-8">
+											<div class="col-sm-12">
 												<input type="password" class="form-control" name="password">
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-4 col-form-label">Confirm Password*</label>
-											<div class="col-sm-8">
+											<div class="col-sm-12">
 												<input type="password" class="form-control" name="password_confirmation">
 											</div>
 										</div>
 									</div>
 								</section>
 								
-								<button type="submit" id="success-modal-btn"  data-target="#success-modal" >Regisration</button>
+								<button type="submit"  class="bg-warning p-3 w-50" >Regisration</button>
 								</form>
 						</div>
 					</div>

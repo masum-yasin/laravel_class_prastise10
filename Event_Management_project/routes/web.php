@@ -27,6 +27,11 @@ Route::get('/dashboard', function () {
     return view('backend.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// forget password///
+Route::get('/forgetpassword',function(){
+    return view('backend.forgetpassword');
+});
+
 
 
 
