@@ -60,6 +60,12 @@
 						<form method="POST" action="{{ route('password.store') }}">
 							@csrf
 							<div class="input-group custom">
+								<input type="email" class="form-control form-control-lg" placeholder="Email" name="email">
+								<div class="input-group-append custom">
+									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
+								</div>
+							</div>
+							<div class="input-group custom">
 								<input type="password" class="form-control form-control-lg" placeholder="New Password" name="password">
 								<div class="input-group-append custom">
 									<span class="input-group-text"><i class="dw dw-padlock1"></i></span>
