@@ -67,9 +67,9 @@ Route::middleware('auth')->group(function () {
                 ->name('product.store');
     Route::get('product/edit/{id}', [ProductController::class, 'edit'])
                 ->name('product.edit');
-    Route::post('product/update', [ProductController::class, 'update'])
+    Route::post('product/update/{id}', [ProductController::class, 'update'])
                 ->name('product.update');
-    Route::get('product/delete/{id}', [ProductController::class, 'delete'])
+    Route::get('product/delete/{id}', [ProductController::class, 'destroy'])
                 ->name('product.delete');
 // Category
     Route::get('category', [CategoryController::class, 'index'])
@@ -80,7 +80,7 @@ Route::middleware('auth')->group(function () {
                 ->name('category.store');
     Route::get('category/edit/{id}', [CategoryController::class, 'edit'])
                 ->name('category.edit');   
-    Route::post('category/update', [CategoryController::class, 'update'])
+    Route::post('category/update/{id}', [CategoryController::class, 'update'])
                 ->name('category.update');
     Route::get('category/delete/{id}', [CategoryController::class, 'delete'])
                 ->name('category.delete');                            

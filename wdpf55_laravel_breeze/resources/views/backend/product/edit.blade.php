@@ -31,24 +31,24 @@
           <h5 class="card-title">Product Entry</h5>
 
           <!-- General Form Elements -->
-          <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
+          <form method="post" action="{{route('product.update',$products->id)}}" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Name</label>
               <div class="col-sm-10">
-                <input type="text" name="name" class="form-control" value="{{old('name')}}">
+                <input type="text" name="name" class="form-control" value=" {{old('description',$products->name)}}">
               </div>
             </div>
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Description</label>
               <div class="col-sm-10">
-                <textarea name="description" class="form-control tinymce-editor" {{old('description')}}></textarea>
+                <textarea name="description" class="form-control tinymce-editor"  {{old('description',$products->description)}}></textarea>
               </div>
             </div><br>
             <div class="row mb-3">
               <label for="inputText" class="col-sm-2 col-form-label">Price</label>
               <div class="col-sm-10">
-                <input type="text" name="price" class="form-control" name="price" value="{{old('price')}}">
+                <input type="text" name="price" class="form-control" name="price" value="{{old('price',$products->price)}}">
               </div>
             </div>
             <div class="row mb-3">
@@ -57,22 +57,24 @@
                     <select name="category" class="form-select" aria-label="Default select example">
                       <option selected value="">Select a category</option>
                       @foreach($cats as $cat)
-                      <option value="{{$cat->id}}"{{old('category')==$cat->id ? 'selected':''}}>{{$cat->name}}</option>
+                      <option value="{{$cat->id}}" @selected(old('category',$products->category_id == $cat->id))>{{$cat->name}}</option>
                       @endforeach
                     </select>
                   </div>
                 </div>
+                
+                {{-- radio --}}
                 <fieldset class="row mb-3">
                   <legend class="col-form-label col-sm-2 pt-0">Products Status</legend>
                   <div class="col-sm-10">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="availibility" id="gridRadios1"  value="1" {{old('availibility')==1 ? 'checked':''}}>
+                      <input class="form-check-input" type="radio" name="availibility" id="gridRadios1"  value="1" @checked(old('availibility', $products->availibility)==1)>
                       <label class="form-check-label" for="gridRadios1">
                         Available
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="availibility" id="gridRadios2" value="0" {{old('availibility')==0 ? 'checked':''}} >
+                      <input class="form-check-input" type="radio" name="availibility" id="gridRadios2" value="0" @checked(old('availibility', $products->availibility)==0) >
                       <label class="form-check-label" for="gridRadios2">
                         Not Available
                       </label>
@@ -85,19 +87,21 @@
                     </div>
                   </div>
                 </fieldset>
+
+
                 <div class="row mb-3">
                   <legend class="col-form-label col-sm-2 pt-0">Tags</legend>
                   <div class="col-sm-10">
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="tags[]" value="full-sleeves" {{in_array('full-sleeves', old('tags', [])) ? 'checked':''}}>
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="tags[]" value="full-sleeves" @checked(old('tags',in_array('full-sleeves', $products->tags)=='full-sleeves')) >
                       <label class="form-check-label" for="gridCheck1">
                      Full Sleeves
                       </label>
                     </div>
 
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck2"  name="tags[]" value="half-sleeves"  {{in_array('half-sleeves', old('tags', [])) ? 'checked':''}}>
+                      <input class="form-check-input" type="checkbox" id="gridCheck2"  name="tags[]" value="half-sleeves"  @checked(old('tags',in_array('half-sleeves', $products->tags)=='half-sleeves'))>
                       <label class="form-check-label" for="gridCheck2">
                    Half Sleeves
                       </label>
@@ -106,8 +110,13 @@
                   </div>
                 </div>
                 <label for="inputNumber" class="col-sm-2 col-form-label">Photo Upload</label>
-                <div class="col-sm-10">
-                  <input class="form-control" type="file" id="formFile" name="photo">
+                <div class="d-flex gap-5">
+                    <div class="col-sm-10">
+                        <input class="form-control" type="file" id="formFile" name="photo">
+                      </div>
+                      <div>
+                          <img src="{{asset('uploads/'.$products->image)}}" alt="" style="width: 50px; height:50px">
+                      </div>
                 </div>
             <div class="row mb-3 mt-3">
               <label class="col-sm-2 col-form-label">Submit Button</label>

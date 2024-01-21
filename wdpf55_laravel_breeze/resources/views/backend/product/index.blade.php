@@ -23,6 +23,11 @@
           <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
 
           <!-- Table with stripped rows -->
+          @if(session('msg'))
+          <div class="alert alert-danger">
+            {{session('msg')}}
+          </div>
+          @endif
           <table class="table datatable">
             <thead>
               <tr>
@@ -44,12 +49,17 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->price}}</td>
                 <td><img src="{{asset('uploads/'.$item->image)}}" alt="Image" width="50px" height="50px"></td>
-                <td>{{$item->description}}</td>
+                <td>{!!$item->description!!}</td>
                 <td>{{$item->category->name}}</td>
                 <td>
-                  {{implode(",", $item->tags)}}
+                  {{-- {{implode(",", $item->tags)}} --}}
+                  @foreach($item->tags as $tag)
+                  <li>{{$tag}}</li>
+                  @endforeach
                 </td>
-                <td>Edit | Delete</td> 
+                <td class="d-flex justify-content-between gap-2"> 
+                  <a href="{{route('product.edit', $item->id)}}" class="btn btn-sm btn-info">Edit</a>
+                  <a href="{{route('product.delete',$item->id)}}" class="btn btn-sm btn-info">Delete</a></td> 
               </tr>
             @endforeach 
             </tbody>

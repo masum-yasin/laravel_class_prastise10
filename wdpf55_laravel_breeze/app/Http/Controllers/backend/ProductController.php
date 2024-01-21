@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\backend;
-
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
@@ -85,7 +84,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cats = Category::get();
+        $products = Product::find($id);
+        // $data['products']=$product;
+        return view('backend.product.edit',compact('products','cats'));
     }
 
     /**
@@ -93,7 +95,31 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::find($id);
+        $validate = $request->validate([
+            'name'=>'required|min:4',
+            'description'=>'required|min:6',
+            'price'=>'required|numeric',
+            'category'=>'required',
+            'photo'=>'mimes:jpg,jpeg,png',
+
+        ]);
+        $filename = time(). "." . $request->photo->extension();
+        if($validate){
+            $data =[
+                'name'=>  $request->name,
+                'description'=>  $request->description,
+                'price'=>  $request->price,
+                'availibility'=>  $request->availibility,
+                'category_id'=>  $request->category, 
+                'tags'=>  $request->tags, 
+                'image'=>$filename,
+
+            ];
+            $product->update($data);
+            $request->photo->move('uploads', $filename);                                                                                       
+            return redirect('product')->with('msg','update Successfylly');
+        }
     }
 
     /**
@@ -101,6 +127,9 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::find($id);
+        if($product->delete()){
+        return redirect('product')->with('msg','Delete Successfully');
+        }
     }
 }
