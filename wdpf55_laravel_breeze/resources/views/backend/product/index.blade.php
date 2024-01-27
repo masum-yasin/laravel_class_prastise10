@@ -28,6 +28,11 @@
             {{session('msg')}}
           </div>
           @endif
+          @if(session('success'))
+          <div class="alert alert-success">
+            {{ session('success') }}
+          </div> 
+      @endif
           <table class="table datatable">
             <thead>
               <tr>
@@ -49,7 +54,7 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->price}}</td>
                 <td><img src="{{asset('uploads/'.$item->image)}}" alt="Image" width="50px" height="50px"></td>
-                <td>{!!$item->description!!}</td>
+                 <td>{!!$item->description!!}</td>
                 <td>{{$item->category->name}}</td>
                 <td>
                   {{-- {{implode(",", $item->tags)}} --}}
@@ -59,7 +64,13 @@
                 </td>
                 <td class="d-flex justify-content-between gap-2"> 
                   <a href="{{route('product.edit', $item->id)}}" class="btn btn-sm btn-info">Edit</a>
-                  <a href="{{route('product.delete',$item->id)}}" class="btn btn-sm btn-info">Delete</a></td> 
+                  <a href="{{route('product.delete',$item->id)}}" class="btn btn-sm btn-info">Delete</a>
+
+                  {{-- add to cart --}}
+                 
+                  <p class="btn-holder mt-3"><a href="{{ route('add.to.cart', $item->id) }}" class="btn btn-warning btn-block text-center" role="button">Add to cart</a> </p>
+                
+                </td> 
               </tr>
             @endforeach 
             </tbody>

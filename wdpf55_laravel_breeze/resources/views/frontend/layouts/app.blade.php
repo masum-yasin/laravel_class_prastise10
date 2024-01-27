@@ -70,6 +70,8 @@
     </div>
    @include('frontend.layouts.header')
    @yield('content')
+  
+
    @include('frontend.layouts.footer') 
     <script src="frontend/assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="frontend/assets/js/vendor/jquery-3.6.0.min.js"></script>
