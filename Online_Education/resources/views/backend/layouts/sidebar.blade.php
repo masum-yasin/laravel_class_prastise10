@@ -141,8 +141,46 @@
           </ul>
         </div>
       </li>
+      {{-- student class --}}
+      <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#class" aria-expanded="false" aria-controls="scourse">
+          <span class="menu-icon">
+            <i class="mdi mdi-security"></i>
+          </span>
+          <span class="menu-title">Student class</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="class">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href=" {{route('class.index')}}">
+              student Class</a></li>
+          <li class="nav-item"> <a class="nav-link" href=" {{route('class.create')}}">
+                Add Student</a></li>
+           </ul>
+        </div>
+      </li>
+      {{-- Student  --}}
 
-
+      <li class="nav-item menu-items">
+        <a class="nav-link" data-toggle="collapse" href="#student" aria-expanded="false" aria-controls="student">
+          <span class="menu-icon">
+            <i class="mdi mdi-security"></i>
+          </span>
+          <span class="menu-title">Student</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="student">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href=" {{route('students.index')}}">
+              
+             All Student</a></li>
+          
+           
+            <li class="nav-item"> <a class="nav-link" href=" {{route('students.create')}}">Add Student</a></li>
+        
+          </ul>
+        </div>
+      </li>
 
 
       

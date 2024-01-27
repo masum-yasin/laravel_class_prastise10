@@ -115,8 +115,7 @@
                         <input class="form-control" type="file" id="formFile" name="photo">
                       </div>
                       <div>
-                          <img src="{{asset('uploads/'.$products->image)}}" alt="" style="width: 50px; height:50px">
-                      </div>
+                          
                 </div>
             <div class="row mb-3 mt-3">
               <label class="col-sm-2 col-form-label">Submit Button</label>

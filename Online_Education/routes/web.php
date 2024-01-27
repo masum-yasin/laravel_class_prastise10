@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\admin\ClassController;
+use App\Http\Controllers\admin\StudentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,14 @@ Route::middleware('auth')->group(function () {
 Route::get('teacher/login',[TeacherController::class,'login']);
 Route::post('teacher/login',[TeacherController::class,'store'])->name('TeacherLogin');
 Route::get('teacher/tdashboard',[TeacherController::class,'tdashboard'])->name('teacher.tdashboard');
+//admin class
+Route::get('class/create',[ClassController::class,'create'])->name('class.create');
+Route::get('class',[ClassController::class,'index'])->name('class.index');
+Route::post('class/store',[ClassController::class,'store'])->name('class.store');
+Route::get('class/delete/{id}',[ClassController::class,'delete'])->name('class.delete');
+// Student Route start//
+Route::resource('students', StudentController::class);
+
 
 
 require __DIR__.'/auth.php';

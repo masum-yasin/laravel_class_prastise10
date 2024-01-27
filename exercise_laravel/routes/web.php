@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
-use GuzzleHttp\Psr7\Request;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,10 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('contact',[ContactController::class,'index'])->name('contact.us');
+Route::post('user/store',[ContactController::class,'store'])->name('user.store');
 
-Route::get('test',function (Request $request){
-    // $request->session()->put('age', '30');
-    session(['name' => 'Larael World Wid Php Framwork']);
-});
-
-//  Route::get('contact/create',[ContactController::class,'create'])->name('contact.create');

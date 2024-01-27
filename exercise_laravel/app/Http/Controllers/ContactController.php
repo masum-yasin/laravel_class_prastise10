@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contact;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+
 
 
 class ContactController extends Controller
 {
    public function index(){
-    abort(404);
-//    return view('contact');
+ 
+   return view('contact');
+   }
+   public function store(Request $request){
+      $password = Hash::make($request->password);
+      return $password;
    }
 }
 
